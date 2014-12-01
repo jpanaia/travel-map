@@ -1,0 +1,90 @@
+<p id="notice"><%= notice %></p>
+
+<%= javascript_tag do %>
+   latitude = '<%= j @destination.latitude %>';
+   longitude = '<%= j @destination.longitude %>';
+   city = '<%= j @destination.city %>';
+   country = '<%= j @destination.country %>';
+   description = '<%= j @destination.description %>';
+   num_activities = '<%= j @destination.activities.length.to_s %>'
+
+   <% @destination.activities.each do |activity| %>
+     activity_name = '<%= j activity.name %>'
+     activity_latitude = '<%= j activity.latitude %>'
+     activity_longitude = '<%= j activity.longitude %>'
+     activity_url = '<%= j activity.url %>'
+	   activity_name = '<%= j activity.name %>'
+   <% end %>
+<% end %>
+
+<script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(<%= @destination.latitude %>,<%= @destination.longitude %>);
+
+  var mapOptions = {
+    zoom: 2,
+    scrollwheel: false,   
+    center: myLatlng
+  }
+
+  var map = new google.maps.Map(document.getElementById('destination-map'), mapOptions);
+
+// Create an array of sites
+  var sites = [];
+
+  <% sites_array = [] %>
+  <% @destination.activities.each do |activity| %>
+    <% sites_array.push(activity.name) %>
+    <% sites_array.push(activity.latitude) %>
+    <% sites_array.push(activity.longitude) %>
+    sites.push(<% sites_array %>);
+  <% end %>
+
+  console.log(sites);
+  
+  // Loop over all sites and display marker images
+    var marker, i;
+
+    for (i = 0; i < sites.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(sites[i][1], sites[i][2]),
+        map: map,
+        animation: google.maps.Animation.DROP,
+      });
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+<%#= content_tag "div", id: "destinations", data: {url: Destination.limit(10) } do %>
+<!-- Loading destinations...
+ --><%# end %>
+
+ <p>Num activities: <%= @destination.activities.length.to_s %></p>
+
+<h1><%= @destination.city %>, <%= @destination.country %></h1>
+
+<p><%= @destination.latitude %>, <%= @destination.longitude %></p>
+
+<p><%= @destination.description %></p>
+
+<% if !@destination.activities.empty? %>
+	<h2>Activities</h2>
+	<% @destination.activities.each do |activity| %>
+	<p><a href="<%= activity.url %>" target="_blank"><%= activity.name %></a><br/>
+  <p><%= activity.latitude %>,<%= activity.longitude %></p>
+	<% end %>
+<% end %>
+
+
+<div id="destination-map"></div>
+
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_destination_path(@destination), class: "btn btn-default" %> 
+  <%= link_to 'Back', destinations_path, class: "btn btn-default" %>
+</div>
+
+

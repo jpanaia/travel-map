@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<%= javascript_tag do %>
+   latitude = '<%= j @destination.latitude %>';
+   longitude = '<%= j @destination.longitude %>';
+   city = '<%= j @destination.city %>';
+   country = '<%= j @destination.country %>';
+   description = '<%= j @destination.description %>';
+<% end %>
+
+<h1><%= @destination.city %>, <%= @destination.country %></h1>
+
+<p><%= @destination.latitude %>, <%= @destination.longitude %></p>
+
+<p><%= @destination.description %></p>
+
+<%# if !@destination.activities.empty? %>
+<!--	<h2>Activities</h2>
+	<%# @destination.activities.each do |activity| %>
+	<p><a href="<%#= activity.url %>" target="_blank"><%#= activity.name %></a><br/>
+  <p><%#= activity.latitude %>,<%#= activity.longitude %></p>
+	<%# end %>
+<%# end %> -->
+
+<div id="destination-map"></div>
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_destination_path(@destination), class: "btn btn-default" %> 
+  <%= link_to 'Back', destinations_path, class: "btn btn-default" %>
+</div>
+
+

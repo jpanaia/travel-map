@@ -1,0 +1,14 @@
+<h1>France Destinations</h1>
+
+<div class="row">
+    <% @france.each do |oohlala| %>
+      <div class="col-md-4">
+       <div class="panel panel-default">
+        <div class="panel-body">
+         <h2><%= oohlala.city %></h2>
+         <p><%= oohlala.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

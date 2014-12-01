@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Activities</h1>
+
+<!-- Next step would be organizing by city/country -->
+
+<div class="row">
+    <% @activities.each do |activity| %>
+      <div class="col-md-4">
+       <div class="panel panel-default">
+        <div class="panel-body">
+         <h3><%= activity.name %></h3>
+         <h4>in <%= link_to "#{activity.destination.full_name}", destination_path(id: activity.destination_id) %></h4>
+         <p><a href="<%= activity.url %>" target="_blank">Vist website</a></p>
+         <p><%= activity.latitude %>,<%= activity.longitude %></p>
+         <div class="btn-group">
+          <%= link_to 'Show', activity, class: "btn btn-default" %>
+          <%= link_to 'Edit', edit_activity_path(activity), class: "btn btn-default" %>
+          <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+         </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Activity', new_activity_path %>

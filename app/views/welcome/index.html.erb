@@ -1,0 +1,17 @@
+<h1>Welcome to my travel site</h1>
+<p>This is my groovy travel site ya'll.</p>
+
+<%#= @homeland %>
+<br>
+
+<ul>
+<% @countries.each do |country| %>
+  <li><%= country %></li>
+<% end %>
+</ul>
+<div id="map-canvas"></div>
+
+<%#= image_tag "peru.jpg", alt: "Machu Piccu", class: "country", id: "Peru", title: "Machu Picchu", width: "50%" %>
+<%#= image_tag "peru2.jpg", width: "50%" %>
+<%#= image_tag "peru3.jpg", width: "50%" %>
+<%#= image_tag "peru4.jpg", width: "50%" %>

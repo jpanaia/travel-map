@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Destination Wish List</h1>
+
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All", destinations_path %></li>
+ <% @my_countries.each do |country| %>
+  <li><%= link_to "#{country}", controller: "destinations", country: "#{country}" %></li>
+  <% end %>
+</ul>
+
+  <div class="row">
+    <% @destinations.each do |destination| %>
+      <div class="col-md-4">
+       <div class="panel panel-default">
+        <div class="panel-body">
+         <h3><%= destination.full_name %></h3>
+         <p><%= destination.description %></p>
+         <ul>
+            <% destination.activities.each do |destination| %>
+              <li><%= destination.name %></li>
+            <% end %>
+         </ul>
+         
+         <div class="btn-group">
+          <%= link_to 'Show', destination, class: "btn btn-default" %>
+          <%= link_to 'Edit', edit_destination_path(destination), class: "btn btn-default" %>
+          <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+         </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Destination', new_destination_path, class: "btn btn-primary" %>
+
+
+<%= link_to 'France', france_path, class: "btn btn-success" %>

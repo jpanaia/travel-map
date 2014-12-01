@@ -1,0 +1,14 @@
+<h1>Contact Me</h1>
+<p>Do it.</p>
+
+<%= form_tag('/contact') do %>
+ Name: <%= text_field_tag :name %> <br/>
+ Country: <%= text_field_tag :country %><br/>
+ Zip: <%= text_field_tag :zip %><br/>
+ <%= submit_tag "Submit User" %>
+
+ <% end %>
+
+ <p>Your name is <%= @name %></p>
+ <p>Your country is <%= @country %></p>
+ <p>Your zip is <%= @zip %></p>

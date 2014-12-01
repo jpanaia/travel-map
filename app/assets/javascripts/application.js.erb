@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore-min
+//= require gmaps/google
 //= require_tree .
 
 
 $(document).ready(function (){
+
 
 function initialize() {
 
@@ -31,45 +34,45 @@ function initialize() {
   var image = "<%= asset_path 'peru-icon.png'%>"
 
   // *****  Single Marker code  ***** 
-  var marker = new google.maps.Marker({
-	  position: myLatlng,
-	  map: map,
-	  title: 'Machu Picchu'
-  });
+ //  var marker = new google.maps.Marker({
+	//   position: myLatlng,
+	//   map: map,
+	//   title: 'Machu Picchu'
+ //  });
 
-  var contentString = '<h2>Machu Picchu</h2>' +
-   '<p>This is the coolest place on earth, you guys.</p>'
-	;
+ //  var contentString = '<h2>Machu Picchu</h2>' +
+ //   '<p>This is the coolest place on earth, you guys.</p>'
+	// ;
 
-  var infowindow = new google.maps.InfoWindow({
-   content: contentString
-  });
+ //  var infowindow = new google.maps.InfoWindow({
+ //   content: contentString
+ //  });
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-  });
+ //  google.maps.event.addListener(marker, 'click', function() {
+ //    infowindow.open(map,marker);
+ //  });
 
    // *****  Multiple Marker Code  ***** 
    //Create an array of sites
-	// var sites = [
-	//   ['Machu Picchu', -13.163047, -72.544566, 4],
-	//   ['Temple of the 3 Windows', -13.163726, -72.544881, 5],
-	//   ['House of the Guardian to the Funerary Rock', -13.165398, -72.544624, 3],
-	//   ['Sacred Rock', -13.161846, -72.546104, 2],
-	//   ['Intihuatana', -13.163439, -72.546732, 1]
-	// ];
+	var sites = [
+	  ['Machu Picchu', -13.163047, -72.544566, 4],
+	  ['Temple of the 3 Windows', -13.163726, -72.544881, 5],
+	  ['House of the Guardian to the Funerary Rock', -13.165398, -72.544624, 3],
+	  ['Sacred Rock', -13.161846, -72.546104, 2],
+	  ['Intihuatana', -13.163439, -72.546732, 1]
+	];
 	
-	// Loop over all sites and display marker images
-  //   var marker, i;
+	//Loop over all sites and display marker images
+    var marker, i;
 
-  //   for (i = 0; i < sites.length; i++) {  
-  //     marker = new google.maps.Marker({
-  //       position: new google.maps.LatLng(sites[i][1], sites[i][2]),
-  //       map: map,
-  //       animation: google.maps.Animation.DROP,
-  //       icon: image
-  //     });
-  // }
+    for (i = 0; i < sites.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(sites[i][1], sites[i][2]),
+        map: map,
+        animation: google.maps.Animation.DROP,
+        icon: image
+      });
+  }
 
 
  } // end of initialize function

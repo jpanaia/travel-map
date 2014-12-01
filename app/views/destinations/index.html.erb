@@ -16,11 +16,11 @@
         <div class="panel-body">
          <h3><%= destination.full_name %></h3>
          <p><%= destination.description %></p>
-         <ul>
-            <% destination.activities.each do |destination| %>
-              <li><%= destination.name %></li>
-            <% end %>
-         </ul>
+         <!-- <ul>
+            <%# destination.activities.each do |destination| %>
+              <li><%#= destination.name %></li>
+            <%# end %>
+         </ul> -->
          
          <div class="btn-group">
           <%= link_to 'Show', destination, class: "btn btn-default" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201145739) do
+ActiveRecord::Schema.define(version: 20141201215956) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20141201145739) do
     t.datetime "updated_at",     null: false
     t.string   "destination_id"
     t.string   "integer"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "destinations", force: true do |t|
@@ -34,8 +35,9 @@ ActiveRecord::Schema.define(version: 20141201145739) do
     t.string   "integer"
     t.integer  "lat"
     t.integer  "long"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "travelers", force: true do |t|

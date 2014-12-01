@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <%= javascript_tag do %>
-   latitude = '<%= j @destination.latitude %>';
-   longitude = '<%= j @destination.longitude %>';
-   city = '<%= j @destination.city %>';
-   country = '<%= j @destination.country %>';
+   latitude = '<%= j @destination.latitude.to_s %>';
+   longitude = '<%= j @destination.longitude.to_s %>';
+   address = '<%= j @destination.address %>';
    description = '<%= j @destination.description %>';
-<% end %>
+<% end %> 
 
-<h1><%= @destination.city %>, <%= @destination.country %></h1>
+<!-- <h1><%#= @destination.city %>, <%#= @destination.country %></h1> -->
+<h2><%= @destination.address %></h2>
 
 <p><%= @destination.latitude %>, <%= @destination.longitude %></p>
 

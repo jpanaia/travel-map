@@ -1,5 +1,9 @@
 class Activity < ActiveRecord::Base
-	validates :name, :url, presence: true
+
+	geocoded_by :address
+	after_validation :geocode
+
+	#validates :name, :url, presence: true
 
 	belongs_to :destination
 end
